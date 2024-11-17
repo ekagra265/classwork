@@ -1,17 +1,21 @@
 #include <stdio.h>
+
 int main() {
- int marks[] = {78, 65, 55, 82, 39};
- int n = 5;
- for (int i = 0; i < n; i++) {
- if (marks[i] >= 75) {
- printf("A ");
- } else if (marks[i] >= 60) {
- printf("B ");
- } else if (marks[i] >= 40) {
- printf("C ");
- } else {
- printf("D ");
- }
- }
- return 0;
+    int num1, num2, hcf;
+
+    // Input two integers
+    printf("Enter two integers: ");
+    scanf("%d %d", &num1, &num2);
+
+    // Find HCF using the iterative method
+    for (hcf = (num1 < num2 ? num1 : num2); hcf > 0; hcf--) {
+        if (num1 % hcf == 0 && num2 % hcf == 0) {
+            break;
+        }
+    }
+
+    // Print the HCF
+    printf("HCF of %d and %d is %d.\n", num1, num2, hcf);
+
+    return 0;
 }
