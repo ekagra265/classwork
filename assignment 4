@@ -1,0 +1,75 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    int user_choice, computer_choice, round, i = 1, exit_choice;
+
+    // Seed random number generator
+    srand(time(0));
+
+    // Ask for the number of rounds
+    printf("\nEnter the number of rounds you want to play: ");
+    scanf("%d", &round);
+
+    // Start the game loop for multiple rounds
+    for (i = 1; i <= round; i++) {
+        // Display the options
+        printf("\n\t1) To select ROCK, enter your choice as 1\n");
+        printf("\t2) To select PAPER, enter your choice as 2\n");
+        printf("\t3) To select SCISSOR, enter your choice as 3\n");
+
+        // Input user's choice
+        printf("\nEnter your choice: ");
+        scanf("%d", &user_choice);
+
+        // Validate user's input
+        if (user_choice == 1)
+            printf("You have selected ROCK\n");
+        else if (user_choice == 2)
+            printf("You have selected PAPER\n");
+        else if (user_choice == 3)
+            printf("You have selected SCISSOR\n");
+        else {
+            printf("# INVALID CHOICE\n");
+            printf("# Game has been terminated\n");
+            break;
+        }
+
+        // Generate computer's choice using a random number from 0 to 100
+        int rand_number = rand() % 101; // Random number between 0 and 100
+
+        if (rand_number >= 0 && rand_number <= 33) {
+            computer_choice = 1; // Rock
+            printf("System has selected ROCK\n");
+        } else if (rand_number >= 34 && rand_number <= 66) {
+            computer_choice = 2; // Paper
+            printf("System has selected PAPER\n");
+        } else {
+            computer_choice = 3; // Scissors
+            printf("System has selected SCISSOR\n");
+        }
+
+        // Determine the winner
+        if (user_choice == computer_choice) {
+            printf("\n\tMATCH TIE\n");
+        } else if ((user_choice == 1 && computer_choice == 3) ||
+                   (user_choice == 2 && computer_choice == 1) ||
+                   (user_choice == 3 && computer_choice == 2)) {
+            printf("\n\tCongratulations!!! You have won the game\n");
+        } else {
+            printf("\n\tOops!!! System has won the game\n");
+            printf("\t      Better luck next time\n");
+        }
+
+        // Option to exit the game
+        printf("\nNOTE: If you want to exit, press 9. Otherwise, press any other key to continue: ");
+        scanf("%d", &exit_choice);
+        if (exit_choice == 9) {
+            printf("You have successfully exited the game.\n");
+            break;
+        }
+    }
+
+    return 0;
+}
