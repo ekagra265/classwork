@@ -1,13 +1,43 @@
 #include <stdio.h>
+
 int main() {
- int marks[] = {78, 99, 55, 99, 39};
- int n = 5, count = 0;
- for (int i = 0; i < n; i++) {
- if (marks[i] == 99) {
- printf("99 found at index %d\n", i);
- count++;
- }
- }
- printf("Total students with 99: %d", count);
- return 0;
+    int a, b, temp;
+
+    // Input two numbers
+    printf("Enter two integers: ");
+    scanf("%d %d", &a, &b);
+
+    printf("\nOriginal values: a = %d, b = %d\n", a, b);
+
+    // Method 1: Using a temporary variable
+    temp = a;
+    a = b;
+    b = temp;
+    printf("\nAfter Method 1 (Using temporary variable): a = %d, b = %d\n", a, b);
+
+    
+    // Method 2: Using arithmetic (addition and subtraction)
+    a = a + b;
+    b = a - b;
+    a = a - b;
+    printf("After Method 2 (Using arithmetic): a = %d, b = %d\n", a, b);
+
+    
+
+    // Method 3: Using bitwise XOR
+    a = a ^ b;
+    b = a ^ b;
+    a = a ^ b;
+    printf("After Method 3 (Using XOR): a = %d, b = %d\n", a, b);
+
+    
+
+    // Method 4: Using pointers
+    int *p1 = &a, *p2 = &b;
+    *p1 = *p1 + *p2;
+    *p2 = *p1 - *p2;
+    *p1 = *p1 - *p2;
+    printf("After Method 4 (Using pointers): a = %d, b = %d\n", a, b);
+
+    return 0;
 }
